@@ -10854,14 +10854,27 @@ async function aplicarUpdate() {
   if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Descargando...'; }
 
   try {
-    // Try to get files from Firestore first (faster, more reliable)
-    var firestoreFiles = null;
-    try {
-      firestoreFiles = await API.get('/api/sync/update-files');
-    } catch(e) {}
-    if (window.electronAPI && window.electronAPI.aplicarUpdate) {
-      var result = await window.electronAPI.aplicarUpdate(firestoreFiles);
+    // Try FORCE update first (downloads directly from hosting, bypasses Firestore)
+    if (window.electronAPI && window.electronAPI.forceUpdate) {
+      var result = await window.electronAPI.forceUpdate();
       if (result.success) {
+        Helpers.mostrarToast('Actualizacion descargada. Reiniciando...', 'success');
+        if (btn) { btn.innerHTML = '<i class="fas fa-check"></i> Reiniciando...'; }
+        setTimeout(function() {
+          if (window.electronAPI && window.electronAPI.relaunch) {
+            window.electronAPI.relaunch();
+          } else { location.reload(); }
+        }, 1500);
+        return;
+      }
+    }
+    
+    // Fallback: try Firestore files
+    var firestoreFiles = null;
+    try { firestoreFiles = await API.get('/api/sync/update-files'); } catch(e) {}
+    if (window.electronAPI && window.electronAPI.aplicarUpdate) {
+      var result2 = await window.electronAPI.aplicarUpdate(firestoreFiles);
+      if (result2 && result2.success) {
         Helpers.mostrarToast('Actualizacion descargada. Reiniciando aplicacion...', 'success');
         if (btn) { btn.innerHTML = '<i class="fas fa-check"></i> Reiniciando...'; }
         setTimeout(function() {

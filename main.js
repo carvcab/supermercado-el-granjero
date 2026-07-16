@@ -60,23 +60,27 @@ if (app.isPackaged && __dirname !== updateDir) {
   
   const shouldClear = updateVer !== '0.0.0' && esMayorOIgualVersion(packagedVer, updateVer);
   if (shouldClear) {
-    console.log(`Packaged version (${packagedVer}) is newer or equal to AppData update (${updateVer}). Clearing update folder...`);
-    try {
-      fs.rmSync(updateDir, { recursive: true, force: true });
-    } catch (e) {
-      console.error('Failed to clear update folder:', e);
-    }
-  } else {
-    const updateMainPath = path.join(updateDir, 'main.js');
-    if (fs.existsSync(updateMainPath)) {
+      console.log(`Packaged version (${packagedVer}) is newer or equal to AppData update (${updateVer}). Clearing update folder...`);
       try {
-        require(updateMainPath);
-        return; // Stop execution of the current file (bootstrap)
+        fs.rmSync(updateDir, { recursive: true, force: true });
       } catch (e) {
-        console.error('Failed to load updated main.js, falling back to original:', e);
-        // Don't clear update folder - the update itself may be fine but have a transient error
+        console.error('Failed to clear update folder:', e);
       }
-    }
+    } else {
+      const updateMainPath = path.join(updateDir, 'main.js');
+      if (fs.existsSync(updateMainPath)) {
+        try {
+          console.log('Loading updated main.js from:', updateMainPath);
+          delete require.cache[require.resolve(updateMainPath)];
+          require(updateMainPath);
+          return; // Stop execution of the current file (bootstrap)
+        } catch (e) {
+          console.error('Failed to load updated main.js, falling back to original:', e.message, e.stack);
+          // Don't clear update folder - the update itself may be fine but have a transient error
+        }
+      } else {
+        console.log('No update main.js found at:', updateMainPath, '- using packaged version');
+      }
   }
 }
 
@@ -194,6 +198,42 @@ function setupIPC() {
     app.exit(0);
   });
 
+  ipcMain.handle('clear-update', () => {
+    const updateDir = path.join(app.getPath('userData'), 'update');
+    if (fs.existsSync(updateDir)) {
+      fs.rmSync(updateDir, { recursive: true, force: true });
+      return true;
+    }
+    return false;
+  });
+
+  ipcMain.handle('force-update', async () => {
+    try {
+      const updateDir = path.join(app.getPath('userData'), 'update');
+      if (fs.existsSync(updateDir)) {
+        fs.rmSync(updateDir, { recursive: true, force: true });
+      }
+      fs.mkdirSync(updateDir, { recursive: true });
+      
+      const filesToUpdate = ['index.html','preload.js','main.js','package.json','css/style.css','js/api-bridge.js','version.json'];
+      for (const file of filesToUpdate) {
+        const url = `${FIREBASE_URL}/${file}?t=${Date.now()}`;
+        const destPath = path.join(updateDir, file);
+        const subDir = path.dirname(destPath);
+        if (!fs.existsSync(subDir)) fs.mkdirSync(subDir, { recursive: true });
+        console.log('Force downloading:', file);
+        await downloadFile(url, destPath);
+      }
+      const mainJsPath = path.join(updateDir, 'main.js');
+      if (!fs.existsSync(mainJsPath) || fs.statSync(mainJsPath).size < 100) {
+        return { success: false, error: 'main.js no se descargo correctamente' };
+      }
+      return { success: true };
+    } catch(e) {
+      return { success: false, error: e.message };
+    }
+  });
+
   ipcMain.handle('aplicar-update', async (event, filesList) => {
     try {
       const updateDir = path.join(app.getPath('userData'), 'update');
@@ -253,6 +293,17 @@ function setupIPC() {
         if (!fs.existsSync(subDir)) fs.mkdirSync(subDir, { recursive: true });
         await downloadFile(url, destPath);
       }
+      
+      // Verify critical files were saved successfully
+      const mainJsPath = path.join(updateDir, 'main.js');
+      if (!fs.existsSync(mainJsPath) || fs.statSync(mainJsPath).size < 100) {
+        throw new Error('La descarga de main.js fallo - archivo vacio o faltante');
+      }
+      const indexHtmlPath = path.join(updateDir, 'index.html');
+      if (!fs.existsSync(indexHtmlPath) || fs.statSync(indexHtmlPath).size < 1000) {
+        throw new Error('La descarga de index.html fallo - archivo vacio o faltante');
+      }
+      console.log('Update files verified successfully');
 
       if (mainWindow) {
         mainWindow.webContents.send('update-progress', { stage: 'complete' });
