@@ -83,6 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
         .toList();
   }
 
+  Map<int, int> _filteredIndexMap() {
+    final map = <int, int>{};
+    int pos = 0;
+    for (int i = 0; i < _items.length; i++) {
+      if (Session.tienePermiso(_itemPerms[i])) {
+        map[i] = pos;
+        pos++;
+      }
+    }
+    return map;
+  }
+
   List<Map> _filteredGroups() {
     final result = <Map>[];
     for (final group in _groups) {
@@ -199,6 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
           int idx = 0;
+          final indexMap = _filteredIndexMap();
           for (final group in groups) {
             final items = group['items'] as List;
             drawerItems.add(
@@ -212,7 +225,9 @@ class _HomeScreenState extends State<HomeScreen> {
             );
             for (final item in items) {
               final it = item as List;
-              final i = idx;
+              final origIdx = _items.indexWhere((e) => e[0] == it[0]);
+              final filteredIdx = origIdx >= 0 ? (indexMap[origIdx] ?? idx) : idx;
+              final i = filteredIdx;
               drawerItems.add(
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
