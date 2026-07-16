@@ -1,0 +1,13 @@
+{
+  "project": "El Granjero",
+  "platform": "ios",
+  "github": {
+    "owner": "almafinz2026-del",
+    "repo": "supermercado-el-granjero-ios"
+  },
+  "ios": {
+    "path": "ios",
+    "scheme": "ElGranjero",
+    "signing": false
+  }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>974825940150-7ek6mt9r9cack91udcs12p2lvb2epsub.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.974825940150-7ek6mt9r9cack91udcs12p2lvb2epsub</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>974825940150-s4h83dblap50tdn3jbn4pq78jibtk871.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBDtL_u01hV273OL2PQ81AUESbHN35QHKo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>974825940150</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.elcampesino.supermercadoApp</string>
+	<key>PROJECT_ID</key>
+	<string>supermercado-el-campesino</string>
+	<key>STORAGE_BUCKET</key>
+	<string>supermercado-el-campesino.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:974825940150:ios:2003b9b319883a60e5b217</string>
+</dict>
+</plist>

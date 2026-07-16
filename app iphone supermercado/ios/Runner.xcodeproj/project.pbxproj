@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000001 /* AppDelegate.swift */; };
+		10000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000002 /* SceneDelegate.swift */; };
+		10000003 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000003 /* LoginViewController.swift */; };
+		10000004 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000004 /* HomeViewController.swift */; };
+		10000005 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000005 /* DashboardViewController.swift */; };
+		10000010 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000010 /* FirebaseService.swift */; };
+		10000011 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000011 /* SessionManager.swift */; };
+		10000012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000012 /* Constants.swift */; };
+		10000020 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000020 /* Product.swift */; };
+		10000021 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000021 /* Client.swift */; };
+		10000022 /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000022 /* Sale.swift */; };
+		10000023 /* Fiado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000023 /* Fiado.swift */; };
+		10000024 /* Caja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000024 /* Caja.swift */; };
+		10000025 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000025 /* Purchase.swift */; };
+		10000026 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000026 /* Provider.swift */; };
+		10000027 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000027 /* Category.swift */; };
+		10000028 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000028 /* User.swift */; };
+		10000029 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000029 /* Config.swift */; };
+		10000030 /* POSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000030 /* POSViewController.swift */; };
+		10000031 /* CajaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000031 /* CajaViewController.swift */; };
+		10000032 /* InventarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000032 /* InventarioViewController.swift */; };
+		10000033 /* ClientesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000033 /* ClientesViewController.swift */; };
+		10000034 /* FiadosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000034 /* FiadosViewController.swift */; };
+		10000035 /* ComprasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000035 /* ComprasViewController.swift */; };
+		10000036 /* ProveedoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000036 /* ProveedoresViewController.swift */; };
+		10000037 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000037 /* HistorialViewController.swift */; };
+		10000038 /* ReportesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000038 /* ReportesViewController.swift */; };
+		10000039 /* CategoriasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000039 /* CategoriasViewController.swift */; };
+		10000040 /* DistribucionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000040 /* DistribucionesViewController.swift */; };
+		10000041 /* UsuariosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000041 /* UsuariosViewController.swift */; };
+		10000042 /* CierresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000042 /* CierresViewController.swift */; };
+		10000043 /* ConfiguracionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000043 /* ConfiguracionViewController.swift */; };
+		10000044 /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000044 /* BarViewController.swift */; };
+		10000099 /* BarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000099 /* BarDetailViewController.swift */; };
+		10000045 /* FacturacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000045 /* FacturacionViewController.swift */; };
+		10000046 /* ComprasProgramadasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000046 /* ComprasProgramadasViewController.swift */; };
+		10000047 /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000047 /* BarcodeScannerViewController.swift */; };
+		10000050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20000050 /* Assets.xcassets */; };
+		10000051 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20000051 /* GoogleService-Info.plist */; };
+		10000060 /* ConsumosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000061 /* ConsumosViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		20000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		20000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		20000003 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		20000004 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		20000005 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		20000010 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		20000011 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		20000012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		20000020 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		20000021 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		20000022 /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
+		20000023 /* Fiado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fiado.swift; sourceTree = "<group>"; };
+		20000024 /* Caja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caja.swift; sourceTree = "<group>"; };
+		20000025 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		20000026 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		20000027 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		20000028 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20000029 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		20000030 /* POSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSViewController.swift; sourceTree = "<group>"; };
+		20000031 /* CajaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CajaViewController.swift; sourceTree = "<group>"; };
+		20000032 /* InventarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioViewController.swift; sourceTree = "<group>"; };
+		20000033 /* ClientesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientesViewController.swift; sourceTree = "<group>"; };
+		20000034 /* FiadosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiadosViewController.swift; sourceTree = "<group>"; };
+		20000035 /* ComprasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprasViewController.swift; sourceTree = "<group>"; };
+		20000036 /* ProveedoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProveedoresViewController.swift; sourceTree = "<group>"; };
+		20000037 /* HistorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
+		20000038 /* ReportesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportesViewController.swift; sourceTree = "<group>"; };
+		20000039 /* CategoriasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriasViewController.swift; sourceTree = "<group>"; };
+		20000040 /* DistribucionesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistribucionesViewController.swift; sourceTree = "<group>"; };
+		20000041 /* UsuariosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosViewController.swift; sourceTree = "<group>"; };
+		20000042 /* CierresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CierresViewController.swift; sourceTree = "<group>"; };
+		20000043 /* ConfiguracionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionViewController.swift; sourceTree = "<group>"; };
+		20000044 /* BarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
+		20000099 /* BarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarDetailViewController.swift; sourceTree = "<group>"; };
+		20000045 /* FacturacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacturacionViewController.swift; sourceTree = "<group>"; };
+		20000046 /* ComprasProgramadasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComprasProgramadasViewController.swift; sourceTree = "<group>"; };
+		20000047 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		20000050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20000051 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GoogleService-Info.plist; sourceTree = "<group>"; };
+		20000052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20000060 /* ElGranjero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElGranjero.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20000061 /* ConsumosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumosViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40000001 = {
+			isa = PBXGroup;
+			children = (
+				40000002 /* ElGranjero */,
+				40000010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40000002 /* ElGranjero */ = {
+			isa = PBXGroup;
+			children = (
+				40000003 /* Models */,
+				40000004 /* Services */,
+				40000005 /* Screens */,
+				40000006 /* Helpers */,
+				20000001 /* AppDelegate.swift */,
+				20000002 /* SceneDelegate.swift */,
+				20000050 /* Assets.xcassets */,
+				20000051 /* GoogleService-Info.plist */,
+				20000052 /* Info.plist */,
+			);
+			path = ElGranjero;
+			sourceTree = "<group>";
+		};
+		40000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20000020 /* Product.swift */,
+				20000021 /* Client.swift */,
+				20000022 /* Sale.swift */,
+				20000023 /* Fiado.swift */,
+				20000024 /* Caja.swift */,
+				20000025 /* Purchase.swift */,
+				20000026 /* Provider.swift */,
+				20000027 /* Category.swift */,
+				20000028 /* User.swift */,
+				20000029 /* Config.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				20000010 /* FirebaseService.swift */,
+				20000011 /* SessionManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		40000005 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				40000007 /* Login */,
+				40000008 /* Dashboard */,
+				40000009 /* POS */,
+				40000011 /* Caja */,
+				40000012 /* Inventario */,
+				40000013 /* Clientes */,
+				40000014 /* Fiados */,
+				40000015 /* Compras */,
+				40000016 /* Proveedores */,
+				40000017 /* Historial */,
+				40000018 /* Reportes */,
+				40000019 /* Categorias */,
+				40000020 /* Distribuciones */,
+				40000021 /* Usuarios */,
+				40000022 /* Cierres */,
+				40000023 /* Configuracion */,
+				40000024 /* Bar */,
+				40000025 /* Facturacion */,
+				40000026 /* ComprasProgramadas */,
+				40000027 /* Scanner */,
+				40000028 /* Consumos */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		40000006 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				20000012 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		40000007 /* Login */ = { isa = PBXGroup; children = (20000003 /* LoginViewController.swift */,); path = Login; sourceTree = "<group>"; };
+		40000008 /* Dashboard */ = { isa = PBXGroup; children = (20000005 /* DashboardViewController.swift */, 20000004 /* HomeViewController.swift */,); path = Dashboard; sourceTree = "<group>"; };
+		40000009 /* POS */ = { isa = PBXGroup; children = (20000030 /* POSViewController.swift */,); path = POS; sourceTree = "<group>"; };
+		40000011 /* Caja */ = { isa = PBXGroup; children = (20000031 /* CajaViewController.swift */,); path = Caja; sourceTree = "<group>"; };
+		40000012 /* Inventario */ = { isa = PBXGroup; children = (20000032 /* InventarioViewController.swift */,); path = Inventario; sourceTree = "<group>"; };
+		40000013 /* Clientes */ = { isa = PBXGroup; children = (20000033 /* ClientesViewController.swift */,); path = Clientes; sourceTree = "<group>"; };
+		40000014 /* Fiados */ = { isa = PBXGroup; children = (20000034 /* FiadosViewController.swift */,); path = Fiados; sourceTree = "<group>"; };
+		40000015 /* Compras */ = { isa = PBXGroup; children = (20000035 /* ComprasViewController.swift */,); path = Compras; sourceTree = "<group>"; };
+		40000016 /* Proveedores */ = { isa = PBXGroup; children = (20000036 /* ProveedoresViewController.swift */,); path = Proveedores; sourceTree = "<group>"; };
+		40000017 /* Historial */ = { isa = PBXGroup; children = (20000037 /* HistorialViewController.swift */,); path = Historial; sourceTree = "<group>"; };
+		40000018 /* Reportes */ = { isa = PBXGroup; children = (20000038 /* ReportesViewController.swift */,); path = Reportes; sourceTree = "<group>"; };
+		40000019 /* Categorias */ = { isa = PBXGroup; children = (20000039 /* CategoriasViewController.swift */,); path = Categorias; sourceTree = "<group>"; };
+		40000020 /* Distribuciones */ = { isa = PBXGroup; children = (20000040 /* DistribucionesViewController.swift */,); path = Distribuciones; sourceTree = "<group>"; };
+		40000021 /* Usuarios */ = { isa = PBXGroup; children = (20000041 /* UsuariosViewController.swift */,); path = Usuarios; sourceTree = "<group>"; };
+		40000022 /* Cierres */ = { isa = PBXGroup; children = (20000042 /* CierresViewController.swift */,); path = Cierres; sourceTree = "<group>"; };
+		40000023 /* Configuracion */ = { isa = PBXGroup; children = (20000043 /* ConfiguracionViewController.swift */,); path = Configuracion; sourceTree = "<group>"; };
+		40000024 /* Bar */ = { isa = PBXGroup; children = (20000044 /* BarViewController.swift */, 20000099 /* BarDetailViewController.swift */,); path = Bar; sourceTree = "<group>"; };
+		40000025 /* Facturacion */ = { isa = PBXGroup; children = (20000045 /* FacturacionViewController.swift */,); path = Facturacion; sourceTree = "<group>"; };
+		40000026 /* ComprasProgramadas */ = { isa = PBXGroup; children = (20000046 /* ComprasProgramadasViewController.swift */,); path = ComprasProgramadas; sourceTree = "<group>"; };
+		40000027 /* Scanner */ = { isa = PBXGroup; children = (20000047 /* BarcodeScannerViewController.swift */,); path = Scanner; sourceTree = "<group>"; };
+		40000028 /* Consumos */ = { isa = PBXGroup; children = (20000061 /* ConsumosViewController.swift */,); path = Consumos; sourceTree = "<group>"; };
+		40000010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20000060 /* ElGranjero.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50000001 /* ElGranjero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60000001 /* Build configuration list for PBXNativeTarget "ElGranjero" */;
+			buildPhases = (
+				70000001 /* Sources */,
+				30000001 /* Frameworks */,
+				70000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElGranjero;
+			productName = ElGranjero;
+			productReference = 20000060 /* ElGranjero.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = 60000002 /* Build configuration list for PBXProject "ElGranjero" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40000001;
+			productRefGroup = 40000010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50000001 /* ElGranjero */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		70000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000050 /* Assets.xcassets in Resources */,
+				10000051 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		70000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000001 /* AppDelegate.swift in Sources */,
+				10000002 /* SceneDelegate.swift in Sources */,
+				10000003 /* LoginViewController.swift in Sources */,
+				10000004 /* HomeViewController.swift in Sources */,
+				10000005 /* DashboardViewController.swift in Sources */,
+				10000010 /* FirebaseService.swift in Sources */,
+				10000011 /* SessionManager.swift in Sources */,
+				10000012 /* Constants.swift in Sources */,
+				10000020 /* Product.swift in Sources */,
+				10000021 /* Client.swift in Sources */,
+				10000022 /* Sale.swift in Sources */,
+				10000023 /* Fiado.swift in Sources */,
+				10000024 /* Caja.swift in Sources */,
+				10000025 /* Purchase.swift in Sources */,
+				10000026 /* Provider.swift in Sources */,
+				10000027 /* Category.swift in Sources */,
+				10000028 /* User.swift in Sources */,
+				10000029 /* Config.swift in Sources */,
+				10000030 /* POSViewController.swift in Sources */,
+				10000031 /* CajaViewController.swift in Sources */,
+				10000032 /* InventarioViewController.swift in Sources */,
+				10000033 /* ClientesViewController.swift in Sources */,
+				10000034 /* FiadosViewController.swift in Sources */,
+				10000035 /* ComprasViewController.swift in Sources */,
+				10000036 /* ProveedoresViewController.swift in Sources */,
+				10000037 /* HistorialViewController.swift in Sources */,
+				10000038 /* ReportesViewController.swift in Sources */,
+				10000039 /* CategoriasViewController.swift in Sources */,
+				10000040 /* DistribucionesViewController.swift in Sources */,
+				10000041 /* UsuariosViewController.swift in Sources */,
+				10000042 /* CierresViewController.swift in Sources */,
+				10000043 /* ConfiguracionViewController.swift in Sources */,
+				10000044 /* BarViewController.swift in Sources */,
+				10000099 /* BarDetailViewController.swift in Sources */,
+				10000045 /* FacturacionViewController.swift in Sources */,
+				10000046 /* ComprasProgramadasViewController.swift in Sources */,
+				10000047 /* BarcodeScannerViewController.swift in Sources */,
+				10000060 /* ConsumosViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		90000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 19;
+				INFOPLIST_FILE = ElGranjero/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elcampesino.supermercadoApp;
+				PRODUCT_NAME = "El Granjero";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		90000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 19;
+				INFOPLIST_FILE = ElGranjero/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elcampesino.supermercadoApp;
+				PRODUCT_NAME = "El Granjero";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60000001 /* Build configuration list for PBXNativeTarget "ElGranjero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90000003 /* Debug */,
+				90000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60000002 /* Build configuration list for PBXProject "ElGranjero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90000001 /* Debug */,
+				90000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80000001 /* Project object */;
+}

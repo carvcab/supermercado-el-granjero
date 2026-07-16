@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "974825940150",
+    "project_id": "supermercado-el-campesino",
+    "storage_bucket": "supermercado-el-campesino.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974825940150:android:acb542e6751a9518e5b217",
+        "android_client_info": {
+          "package_name": "com.elcampesino.supermercado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974825940150-s4h83dblap50tdn3jbn4pq78jibtk871.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elcampesino.supermercado",
+            "certificate_hash": "8766c2b6fbf2aceb3dc1a5028779587acebdaf3c"
+          }
+        },
+        {
+          "client_id": "974825940150-n1f4u18ijfq9nus762sr1kqin5584r29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZffKnJD1CYfuyT4ilh9u3HIQX3_VhtaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974825940150-n1f4u18ijfq9nus762sr1kqin5584r29.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
