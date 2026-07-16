@@ -10,8 +10,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copy GoogleService-Info.plist into Xcode project
-        run: cp "app iphone supermercado/GoogleService-Info.plist" "app iphone supermercado/ios/ElGranjero/GoogleService-Info.plist"
+      - name: Decode and place GoogleService-Info.plist
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > "app iphone supermercado/ios/ElGranjero/GoogleService-Info.plist"
 
       - name: Install CocoaPods
         run: |
