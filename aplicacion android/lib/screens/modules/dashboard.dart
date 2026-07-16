@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/firestore_service.dart';
 import '../../services/notifications.dart';
+import '../../services/session_service.dart';
 import '../../theme.dart';
 
 class DashScreen extends StatefulWidget {
@@ -21,9 +21,6 @@ class _DashScreenState extends State<DashScreen> {
   Map<dynamic, dynamic>? _cajaAbierta;
   bool _loading = true;
   bool _notifiedStock = false;
-  String? _userRole;
-  String? _userPhoto;
-  String? _userName;
 
   StreamSubscription? _subP;
   StreamSubscription? _subV;
@@ -51,7 +48,6 @@ class _DashScreenState extends State<DashScreen> {
         _loading = false;
       });
     });
-    _loadUserProfile();
   }
 
   @override
@@ -156,28 +152,6 @@ class _DashScreenState extends State<DashScreen> {
     return sorted.take(5).toList();
   }
 
-  User? get _user => FirebaseAuth.instance.currentUser;
-
-  Future<void> _loadUserProfile() async {
-    final u = _user;
-    if (u == null) return;
-    final username = u.email?.split('@').first ?? '';
-    try {
-      final usuarios = await Fb.getList('usuarios');
-      final match = usuarios.cast<Map?>().firstWhere(
-        (m) => (m?['username']?.toString() ?? '') == username,
-        orElse: () => null,
-      );
-      if (match != null && mounted) {
-        setState(() {
-          _userName = match['nombre_completo']?.toString();
-          _userRole = match['rol']?.toString();
-          _userPhoto = match['foto']?.toString();
-        });
-      }
-    } catch (_) {}
-  }
-
   @override
   Widget build(BuildContext context) {
     if (_loading) return Center(child: CircularProgressIndicator());
@@ -207,24 +181,22 @@ class _DashScreenState extends State<DashScreen> {
   }
 
   Widget _buildWelcomeCard() {
-    final u = _user;
-    final username = u?.email?.split('@').first ?? 'Usuario';
-    final displayName = _userName ?? u?.displayName ?? username;
+    final displayName = Session.nombreCompleto ?? Session.username ?? 'Usuario';
+    final userRole = Session.rol;
+    final userPhoto = Session.foto;
     final n = DateTime.now();
     final hora = n.hour;
-    final saludo = hora < 12 ? 'Buenos dias' : hora < 18 ? 'Buenas tardes' : 'Buenas noches';
+    final saludo = hora < 12 ? 'Buenos días' : hora < 18 ? 'Buenas tardes' : 'Buenas noches';
     const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     const dias = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'];
     final dateStr = '${dias[n.weekday - 1]}, ${n.day} de ${meses[n.month - 1]}';
     final initial = displayName.isNotEmpty ? displayName[0].toUpperCase() : 'U';
 
     ImageProvider? photoProvider;
-    if (_userPhoto != null && _userPhoto!.startsWith('data:')) {
-      photoProvider = MemoryImage(base64Decode(_userPhoto!.split(',')[1]));
-    } else if (_userPhoto != null && (_userPhoto!.startsWith('http'))) {
-      photoProvider = NetworkImage(_userPhoto!);
-    } else if (u?.photoURL != null && u!.photoURL!.isNotEmpty) {
-      photoProvider = NetworkImage(u.photoURL!);
+    if (userPhoto != null && userPhoto.startsWith('data:')) {
+      photoProvider = MemoryImage(base64Decode(userPhoto.split(',')[1]));
+    } else if (userPhoto != null && userPhoto.startsWith('http')) {
+      photoProvider = NetworkImage(userPhoto);
     }
 
     return Container(
@@ -255,7 +227,7 @@ class _DashScreenState extends State<DashScreen> {
                     Flexible(
                       child: Text(displayName, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                     ),
-                    if (_userRole != null) ...[
+                    if (userRole != null) ...[
                       SizedBox(width: 8),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -263,7 +235,7 @@ class _DashScreenState extends State<DashScreen> {
                           color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text(_userRole!, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.white)),
+                        child: Text(userRole, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.white)),
                       ),
                     ],
                   ],

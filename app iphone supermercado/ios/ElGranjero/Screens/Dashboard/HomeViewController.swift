@@ -187,11 +187,11 @@ class HomeViewController: UIViewController {
                 btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
                 btn.setTitle("  \(module.title)", for: .normal)
                 btn.setImage(UIImage(systemName: module.icon), for: .normal)
-                let active = currentIndex == itemIdx
+                let active = findFilteredIndex(for: i) == currentIndex
                 btn.tintColor = active ? UIColor(red: 0.95, green: 0.78, blue: 0.22, alpha: 1) : UIColor.white.withAlphaComponent(0.7)
                 btn.setTitleColor(active ? .white : UIColor.white.withAlphaComponent(0.8), for: .normal)
                 btn.titleLabel?.font = .systemFont(ofSize: 13.5, weight: active ? .semibold : .regular)
-                btn.tag = itemIdx
+                btn.tag = i  // Store original allModules index
                 btn.addTarget(self, action: #selector(moduleSelected(_:)), for: .touchUpInside)
                 btn.heightAnchor.constraint(equalToConstant: 42).isActive = true
                 btn.backgroundColor = active ? UIColor.white.withAlphaComponent(0.12) : .clear
@@ -243,36 +243,37 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: - Module Navigation
-    func showModule(at index: Int) {
-        guard index >= 0, index < filteredItems.count else { return }
-        currentIndex = index
-
+    func findFilteredIndex(for allModulesIdx: Int) -> Int? {
+        return filteredItems.firstIndex(where: { $0.title == Self.allModules[allModulesIdx].title })
+    }
+    
+    func showModule(at allModulesIndex: Int) {
+        guard let filteredIdx = findFilteredIndex(for: allModulesIndex) else { return }
+        currentIndex = filteredIdx
+        
         for child in children {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
         }
 
-        let vc = filteredItems[index].vc
+        let vc = filteredItems[filteredIdx].vc
         addChild(vc)
-        // Access view to force loadView/viewDidLoad on child
         let _ = vc.view
         vc.view.frame = containerView.bounds
         vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         containerView.addSubview(vc.view)
         vc.didMove(toParent: self)
 
-        // Sync navigation bar items from the active child
-        title = filteredItems[index].title
+        title = filteredItems[filteredIdx].title
         navigationItem.rightBarButtonItems = vc.navigationItem.rightBarButtonItems
         navigationItem.rightBarButtonItem = vc.navigationItem.rightBarButtonItem
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(menuSidebarTapped))
 
-        // Refresh sidebar highlights
+        // Refresh sidebar highlights — compare btn.tag (allModules index) to the active allModules index
         for case let stackView as UIStackView in sidebarView.subviews.compactMap({ $0 as? UIScrollView }).first?.subviews.compactMap({ $0 as? UIStackView }) ?? [] {
             for case let btn as UIButton in stackView.arrangedSubviews {
-                let idx = btn.tag
-                let isActive = idx == index
+                let isActive = btn.tag == allModulesIndex
                 btn.tintColor = isActive ? UIColor(red: 1, green: 0.84, blue: 0.2, alpha: 1) : UIColor.white.withAlphaComponent(0.8)
                 btn.backgroundColor = isActive ? UIColor.white.withAlphaComponent(0.12) : .clear
                 btn.viewWithTag(99)?.alpha = isActive ? 1.0 : 0.0

@@ -160,26 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       drawerScrimColor: Colors.black87,
-      appBar: AppBar(
-        title: Text(title),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 4),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(20),
-                onTap: _showProfileSheet,
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: _buildUserAvatar(size: 34, showBorder: true),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(width: 8),
-        ],
-      ),
+      appBar: AppBar(title: Text(title)),
       body: filtrados.isEmpty
           ? Center(child: Text('No tienes permisos para acceder a ningun modulo.', style: TextStyle(color: Tema.textMuted)))
           : AnimatedSwitcher(
@@ -249,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // ── Menu ──
             Expanded(
-              child: ListView(padding: EdgeInsets.zero, children: [
+              child: ListView(padding: EdgeInsets.only(bottom: 56), children: [
                 for (final group in groups) ...[
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 14, 20, 4),
