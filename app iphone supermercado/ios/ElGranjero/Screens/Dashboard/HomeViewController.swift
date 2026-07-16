@@ -352,7 +352,7 @@ class HomeViewController: UIViewController {
         "dashboard", "caja", "ventas_super", "ventas_bar", "facturacion",
         "historial_ventas", "fiados", "productos", "compras", "compras_programadas",
         "categorias", "distribuciones", "clientes", "proveedores", "usuarios",
-        "consumos", "reportes", "cierres", "configuracion"
+        "consumos", "reportes", "cierres"
     ]
 
     static let allModules: [ModuleItem] = [
@@ -374,7 +374,6 @@ class HomeViewController: UIViewController {
         ModuleItem(title: "Consumos", icon: "person.badge.minus", vc: ConsumosViewController()),
         ModuleItem(title: "Reportes", icon: "chart.bar", vc: ReportesViewController()),
         ModuleItem(title: "Cierres", icon: "lock", vc: CierresViewController()),
-        ModuleItem(title: "Configuración", icon: "gearshape", vc: ConfiguracionViewController()),
     ]
 
     private var _filteredItems: [ModuleItem]?
@@ -392,7 +391,7 @@ class HomeViewController: UIViewController {
         ("Ventas", [2, 3, 4, 5, 6]),
         ("Inventario y Compras", [7, 8, 9, 10, 11, 15]),
         ("Gestión", [12, 13, 14]),
-        ("Análisis", [16, 17, 18])
+        ("Análisis", [16, 17])
     ]
 
     static func personAvatar(size: CGFloat) -> UIImage {
