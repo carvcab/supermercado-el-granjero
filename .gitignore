@@ -1,0 +1,32 @@
+# Node / Electron
+node_modules/
+dist/
+dist_prod/
+_deploy/
+*.exe
+*.asar
+
+# Flutter
+aplicacion android/.dart_tool/
+aplicacion android/.packages
+aplicacion android/build/
+aplicacion android/*.apk
+aplicacion android/*.ipa
+aplicacion android/pubspec.lock
+aplicacion android/.flutter-plugins
+aplicacion android/.flutter-plugins-dependencies
+aplicacion android/ios/Pods/
+aplicacion android/ios/.symlinks/
+aplicacion android/ios/Flutter/Flutter.framework
+aplicacion android/ios/Flutter/Flutter.podspec
+aplicacion android/android/local.properties
+aplicacion android/android/key.properties
+aplicacion android/android/*.jks
+
+# Firebase secrets (injected via GitHub Secrets)
+aplicacion android/ios/Runner/GoogleService-Info.plist
+aplicacion android/android/app/google-services.json
+
+# OS
+.DS_Store
+Thumbs.db

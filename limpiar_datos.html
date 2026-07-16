@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Datos - Supermercado El Granjero</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f4f6f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #1a1a1a;
+        }
+        .card {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #073155; }
+        p { color: #616161; margin-bottom: 1.5rem; line-height: 1.5; font-size: 0.95rem; }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #856404;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        .warning strong { display: block; margin-bottom: 0.25rem; }
+        button {
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.25rem;
+        }
+        .btn-danger {
+            background: #c62828;
+            color: #fff;
+        }
+        .btn-danger:hover { background: #b71c1c; }
+        .btn-cancel {
+            background: #95a5a6;
+            color: #fff;
+        }
+        .btn-cancel:hover { background: #7f8c8d; }
+        .btn-success {
+            background: #1a7a2e;
+            color: #fff;
+        }
+        .btn-success:hover { background: #156c26; }
+        .hidden { display: none; }
+        .status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Limpiar Datos</h1>
+        <p>Esta herramienta elimina todos los datos almacenados localmente (productos, categorías, ventas, clientes, etc.) y los restablece a un estado inicial vacío.</p>
+
+        <div id="confirm-step">
+            <div class="warning">
+                <strong>&#9888; Atención:</strong>
+                Esta acción borrará permanentemente todos los datos locales. Solo se conservarán los roles, permisos y el usuario administrador por defecto.
+            </div>
+            <button class="btn-danger" onclick="ejecutarLimpieza()">Limpiar todos los datos</button>
+            <button class="btn-cancel" onclick="window.location.href='index.html'">Cancelar</button>
+        </div>
+
+        <div id="result-step" class="hidden">
+            <div id="status-msg" class="status"></div>
+            <button class="btn-success" onclick="window.location.href='index.html'" style="margin-top:1rem;">Volver al sistema</button>
+        </div>
+    </div>
+
+    <script>
+        function ejecutarLimpieza() {
+            var claves = [
+                'bridge_data',
+                'app_productos',
+                'app_proveedores',
+                'app_gastos',
+                'app_autoconsumos',
+                'app_ventas',
+                'app_arqueos',
+                'app_clientes',
+                'app_compras',
+                'el_granjero_session'
+            ];
+
+            var errores = [];
+            var eliminadas = 0;
+
+            for (var i = 0; i < claves.length; i++) {
+                try {
+                    localStorage.removeItem(claves[i]);
+                    eliminadas++;
+                } catch (e) {
+                    errores.push(claves[i] + ': ' + e.message);
+                }
+            }
+
+            document.getElementById('confirm-step').classList.add('hidden');
+            document.getElementById('result-step').classList.remove('hidden');
+
+            var msgEl = document.getElementById('status-msg');
+            if (errores.length === 0) {
+                msgEl.className = 'status success';
+                msgEl.textContent = 'Limpieza completada. Se eliminaron ' + eliminadas + ' registros de localStorage exitosamente.';
+            } else {
+                msgEl.className = 'status error';
+                msgEl.textContent = 'Limpieza parcial: ' + eliminadas + ' eliminadas, ' + errores.length + ' errores.\n' + errores.join(', ');
+            }
+        }
+    </script>
+</body>
+</html>

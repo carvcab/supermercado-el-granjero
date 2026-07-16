@@ -1,0 +1,50 @@
+name: Build iOS IPA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.2'
+          channel: 'stable'
+
+      - name: Decode GoogleService-Info.plist
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" | base64 -d > ios/Runner/GoogleService-Info.plist
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+        working-directory: "aplicacion android"
+
+      - name: Install CocoaPods
+        run: |
+          cd "aplicacion android/ios"
+          pod install --repo-update
+        working-directory: .
+
+      - name: Build iOS without codesign
+        run: flutter build ios --release --no-codesign
+        working-directory: "aplicacion android"
+
+      - name: Create IPA
+        run: |
+          mkdir -p Payload
+          cp -R "aplicacion android/build/ios/iphoneos/Runner.app" Payload/
+          zip -r ElGranjero-iOS.ipa Payload/
+          rm -rf Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ElGranjero-iOS-unsigned
+          path: ElGranjero-iOS.ipa

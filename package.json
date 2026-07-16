@@ -1,0 +1,49 @@
+{
+    "name": "supermercado-el-Granjero",
+    "version": "3.8.0",
+    "description": "ERP Supermercado El Granjero",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --win"
+    },
+    "build": {
+        "appId": "com.supermercado.elGranjero",
+        "productName": "Supermercado El Granjero",
+        "directories": {
+            "output": "dist_prod"
+        },
+        "files": [
+            "main.js",
+            "preload.js",
+            "index.html",
+            "version.json",
+            "css/**",
+            "js/**",
+            "libs/**",
+            "assets/**",
+            "webfonts/**"
+        ],
+        "win": {
+            "target": "nsis",
+            "icon": "assets/icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "perMachine": true,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "shortcutName": "Supermercado El Granjero"
+        }
+    },
+    "devDependencies": {
+        "electron": "^33.4.11",
+        "electron-builder": "^25.0.0"
+    },
+    "allowScripts": {
+        "electron@33.4.11": true
+    },
+    "dependencies": {
+        "firebase-admin": "^14.1.0"
+    }
+}

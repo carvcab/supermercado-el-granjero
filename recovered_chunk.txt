@@ -1,0 +1,89 @@
+Created At: 2026-06-29T01:33:43Z
+Completed At: 2026-06-29T01:33:43Z
+File Path: `file:///c:/Users/diego/Documents/memoria/supermercado%20el%20granjero/index.html`
+Total Lines: 8856
+Total Bytes: 464169
+Showing lines 450 to 530
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+450: console.log('dashboard script loaded');
+451: function init_dashboard() {
+452:   console.log('init_dashboard called');
+453:   cargarDashboard();
+454: }
+455: 
+456: async function cargarDashboard() {
+457:   try {
+458:     console.log('cargarDashboard: fetching data...');
+459:     var data = await API.get('/dashboard');
+460:     console.log('Dashboard data:', JSON.stringify(data));
+461:     if (!data) { console.warn('Dashboard: sin datos'); return; }
+462:     document.getElementById('kpiVentasDia').textContent = data.ventas_dia || 0;
+463:     document.getElementById('kpiGananciasDia').textContent = Helpers.formatMoney(data.ganancias_dia || 0);
+464:     document.getElementById('kpiProductosStock').textContent = data.productos_stock || 0;
+465:     document.getElementById('kpiValorInventario').textContent = Helpers.formatMoney(data.valor_inventario || 0);
+466:     document.getElementById('kpiStockBajo').textContent = data.stock_bajo || 0;
+467:     document.getElementById('kpiAgotados').textContent = data.productos_agotados || 0;
+468:     document.getElementById('kpiClientesDeuda').textContent = data.clientes_deuda || 0;
+469:     document.getElementById('kpiCuentasBar').textContent = data.cuentas_bar || 0;
+470:     document.getElementById('kpiVentasMes').textContent = Helpers.formatMoney(data.ventas_mes || 0);
+471: 
+472:     var barFills = document.querySelectorAll('.kpi-bar-fill');
+473:     var vals = [data.ventas_dia, data.ganancias_dia, data.productos_stock, data.valor_inventario, data.stock_bajo, data.productos_agotados, data.clientes_deuda, data.cuentas_bar, data.ventas_mes];
+474:     var maxVal = 1;
+475:     for (var vi = 0; vi < vals.length; vi++) { if (vals[vi] > maxVal) maxVal = vals[vi]; }
+476:     for (var bfi = 0; bfi < barFills.length; bfi++) {
+477:       barFills[bfi].style.width = ((vals[bfi] || 0) / maxVal * 100) + '%';
+478:     }
+479: 
+480:     renderVentasHora(data.ventas_por_hora);
+481:     renderVentasMes(data.ventas_por_mes);
+482:     window._dashboardTopData = data.top_productos;
+483:     window._dashboardCategoriasData = data.ventas_por_categoria;
+484:     renderTopProductos(data.top_productos);
+485:     renderCategorias(data.ventas_por_categoria);
+486:     renderLowStock(data.stock_bajo);
+487:   } catch (e) {
+488:     console.error('Error dashboard:', e);
+489:     Helpers.mostrarToast('Error al cargar dashboard: ' + e.message, 'error');
+490:   }
+491: }
+492: 
+493: // Chart.js Chart Instances Tracker
+494: if (!window.myCharts) { window.myCharts = {}; }
+495: 
+496: function renderVentasHora(data) {
+497:   var ctx = document.getElementById('chartCanvasVentasHora');
+498:   if (!ctx) return;
+499:   if (window.myCharts.ventasHora) { window.myCharts.ventasHora.destroy(); }
+500:   
+501:   var labels = [];
+502:   var dataset = [];
+503:   if (data && data.length) {
+504:     for (var vi = 0; vi < data.length; vi++) {
+505:       var h = String(data[vi].hora);
+506:       if (h.length < 2) h = '0' + h;
+507:       labels.push(h + ':00');
+508:       dataset.push(data[vi].total);
+509:     }
+510:   }
+511:   
+512:   if (!data || !data.length) {
+513:     labels = ['Sin datos'];
+514:     dataset = [0];
+515:   }
+516: 
+517:   var grad = ctx.getContext('2d').createLinearGradient(0, 0, 0, 300);
+518:   grad.addColorStop(0, '#073155');
+519:   grad.addColorStop(1, '#1a7a2e');
+520: 
+521:   window.myCharts.ventasHora = new Chart(ctx, {
+522:     type: 'bar',
+523:     data: {
+524:       labels: labels,
+525:       datasets: [{
+526:         label: 'Ventas por Hora ($)',
+527:         data: dataset,
+528:         backgroundColor: grad,
+529:         borderColor: '#031627',
+530:         borderWidth: 0,
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

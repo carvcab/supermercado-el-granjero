@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "_deploy",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/*.exe",
+      "**/*.apk",
+      "**/*.msi",
+      "**/*.aab",
+      "package-lock.json"
+    ],
+    "rewrites": []
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}
