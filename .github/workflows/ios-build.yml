@@ -10,12 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '15.4'
-
-      - name: Copy GoogleService-Info.plist
+      - name: Copy GoogleService-Info.plist into Xcode project
         run: cp "app iphone supermercado/GoogleService-Info.plist" "app iphone supermercado/ios/ElGranjero/GoogleService-Info.plist"
 
       - name: Install CocoaPods
@@ -39,6 +34,11 @@ jobs:
       - name: Package IPA
         run: |
           APP_PATH=$(find "app iphone supermercado/ios/build" -name "El Granjero.app" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            echo "APP NOT FOUND, searching..."
+            find "app iphone supermercado/ios/build" -name "*.app" -type d
+            exit 1
+          fi
           mkdir Payload
           cp -R "$APP_PATH" Payload/
           zip -r ElGranjero-iOS.ipa Payload/
