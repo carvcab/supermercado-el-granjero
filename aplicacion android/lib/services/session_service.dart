@@ -59,6 +59,9 @@ class Session {
 
   static Map? get user => _user;
   static String? get username => _user?['username']?.toString();
+  static String? get nombreCompleto => _user?['nombre_completo']?.toString() ?? _user?['nombre']?.toString();
+  static String? get foto => _user?['foto']?.toString();
+  static String? get email => _user?['email']?.toString();
   static String? get rol => _user?['rol']?.toString();
   static bool get isLogged => _user != null;
   static bool get isAdmin {
