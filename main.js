@@ -19,6 +19,10 @@ function getPackagedVersion() {
 }
 
 function getUpdateVersion() {
+  const updateMainPath = path.join(app.getPath('userData'), 'update', 'main.js');
+  // Only trust the update version if main.js actually exists (complete download)
+  if (!fs.existsSync(updateMainPath)) return '0.0.0';
+  
   const updatePkgPath = path.join(app.getPath('userData'), 'update', 'package.json');
   if (fs.existsSync(updatePkgPath)) {
     try {
@@ -116,20 +120,23 @@ function downloadFile(url, destPath) {
 
 function getCurrentVersion() {
   // 1. Check update/package.json first (after a successful update)
-  const updatePkgPath = path.join(app.getPath('userData'), 'update', 'package.json');
-  if (fs.existsSync(updatePkgPath)) {
-    try {
-      const pkgData = JSON.parse(fs.readFileSync(updatePkgPath, 'utf8'));
-      if (pkgData && pkgData.version) return pkgData.version;
-    } catch (e) {}
-  }
-  // 2. Check update/version.json
-  const updateVerPath = path.join(app.getPath('userData'), 'update', 'version.json');
-  if (fs.existsSync(updateVerPath)) {
-    try {
-      const verData = JSON.parse(fs.readFileSync(updateVerPath, 'utf8'));
-      if (verData && verData.version) return verData.version;
-    } catch (e) {}
+  const updateMainPath = path.join(app.getPath('userData'), 'update', 'main.js');
+  if (fs.existsSync(updateMainPath)) {
+    const updatePkgPath = path.join(app.getPath('userData'), 'update', 'package.json');
+    if (fs.existsSync(updatePkgPath)) {
+      try {
+        const pkgData = JSON.parse(fs.readFileSync(updatePkgPath, 'utf8'));
+        if (pkgData && pkgData.version) return pkgData.version;
+      } catch (e) {}
+    }
+    // 2. Check update/version.json (only if main.js exists = complete download)
+    const updateVerPath = path.join(app.getPath('userData'), 'update', 'version.json');
+    if (fs.existsSync(updateVerPath)) {
+      try {
+        const verData = JSON.parse(fs.readFileSync(updateVerPath, 'utf8'));
+        if (verData && verData.version) return verData.version;
+      } catch (e) {}
+    }
   }
   // 3. Fallback to installed package.json (read via fs, not require, to avoid cache)
   try {
