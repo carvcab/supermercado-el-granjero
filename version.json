@@ -1,4 +1,4 @@
 {
-  "version": "3.8.0",
-  "mensaje": "Nuevo: Consumos Propios (productos de uso personal). Cierre de caja descuenta consumos. Reportes con pestaña Consumos. Fix: categorías duplicadas, sync PC-Android, fotos de usuario. Rediseño visual completo."
+  "version": "3.8.1",
+  "mensaje": "Nuevo: modo oscuro completo. Consumos con detalle, editar y recalculo de stock. Caja: editar/eliminar movimientos con recalculo. Clientes: colores de saldo corregidos. Modales con teclado adaptado. Dashboard con saludo, fecha y avatar. Fix: navegacion del menu corregida."
 }

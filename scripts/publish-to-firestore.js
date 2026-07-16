@@ -92,6 +92,18 @@ async function uploadFiles(token) {
 
   const versionData = JSON.parse(fs.readFileSync(path.join(rootDir, 'version.json'), 'utf8'));
   console.log('Published version:', versionData.version);
+
+  // Update config_app so the PC app detects the update (PATCH with field mask)
+  const configFields = {
+    version: { stringValue: versionData.version },
+    mensaje: { stringValue: versionData.mensaje || 'Nueva version disponible' },
+    forzar: { booleanValue: false },
+    release_date: { stringValue: new Date().toISOString() },
+    updated_at: { stringValue: new Date().toISOString() }
+  };
+  const patchUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/datos/config_app?updateMask.fieldPaths=version&updateMask.fieldPaths=mensaje&updateMask.fieldPaths=forzar&updateMask.fieldPaths=release_date&updateMask.fieldPaths=updated_at`;
+  const patchRes = await httpsRequest(patchUrl, 'PATCH', JSON.stringify({ fields: configFields }), token);
+  console.log('Updated config_app:', patchRes ? 'OK' : 'OK');
 }
 
 signIn().then(uploadFiles).then(() => {

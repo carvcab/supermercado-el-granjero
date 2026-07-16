@@ -190,7 +190,11 @@ function setupIPC() {
   ipcMain.handle('aplicar-update', async (event, filesList) => {
     try {
       const updateDir = path.join(app.getPath('userData'), 'update');
-      if (!fs.existsSync(updateDir)) fs.mkdirSync(updateDir, { recursive: true });
+      // Clear old update folder to prevent stale/corrupt files from blocking
+      if (fs.existsSync(updateDir)) {
+        try { fs.rmSync(updateDir, { recursive: true, force: true }); } catch(e) {}
+      }
+      fs.mkdirSync(updateDir, { recursive: true });
 
       const filesToUpdate = [
         'index.html',
