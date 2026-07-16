@@ -143,12 +143,13 @@ class HomeViewController: UIViewController {
         // Scrollable menu
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         sidebarView.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: sep.bottomAnchor, constant: 4),
             scrollView.leadingAnchor.constraint(equalTo: sidebarView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: sidebarView.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: sidebarView.bottomAnchor, constant: -56)
+            scrollView.bottomAnchor.constraint(equalTo: sidebarView.bottomAnchor)
         ])
 
         let stackView = UIStackView()
